@@ -62,5 +62,6 @@ the interval count is a parameter of this particular certificate.
 
 OpenAI Codex, using the Astra model, materially supported literature discovery,
 proof development and review,
-exact experiments, Lean formalization, and drafting. The final paper will
+exact experiments, Lean formalization, and drafting. Fable 5.2 also contributed
+conjectures, proof ideas, and mathematical feedback. The final paper will
 describe the full verification coverage. The current scope is stated above.
