@@ -44,7 +44,7 @@ is used to certify the numerical result.
 ## Independently verify the rational certificate
 
 ```sh
-python3 certificates/internal152/verify.py
+python3 certificates/degree_profile/verify.py
 ```
 
 This check uses only Python's standard library and reconstructs all
@@ -52,6 +52,11 @@ This check uses only Python's standard library and reconstructs all
 import an optimizer or the producer's matrix builder. A passing certificate
 alone is not a proof of the streaming algorithm; graph feasibility and
 probability are separate mathematical obligations.
+
+The degree-profile certificate partitions normalized vertex degrees into
+152 intervals and accounts for every benchmark-edge type, including edges
+with both endpoints in the cover. The directory name describes its role;
+the interval count is a parameter of this particular certificate.
 
 ## AI methodology
 

@@ -4,4 +4,4 @@
 *.ilean
 *.log
 __pycache__/
-certificates/internal152/verification.json
+certificates/degree_profile/verification.json
