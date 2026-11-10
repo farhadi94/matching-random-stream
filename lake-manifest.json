@@ -91,6 +91,6 @@
    "inputRev": "v4.33.0",
    "inherited": true,
    "configFile": "lakefile.toml"}],
- "name": "RobustMatching",
+ "name": "RandomOrderMatching",
  "lakeDir": ".lake",
  "fixedToolchain": false}

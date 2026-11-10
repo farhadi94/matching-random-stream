@@ -1,33 +1,35 @@
 # Theorem map
 
-All names below are within `RobustMatching`. The public algorithm namespace
-is `RandomOrderMatching`.
+All names below are within `RandomOrderMatching`. The public algorithm namespace
+is `Algorithms`.
 
 | Paper result | Principal Lean statement |
 |---|---|
-| Bounded-integer random-order approximation | `RandomOrderMatching.bounded_integer_approximation` |
-| Complete bounded-integer machine contract | `RandomOrderMatching.bounded_integer_contract` |
-| Unweighted random-order approximation | `RandomOrderMatching.unweighted_approximation` |
-| Arbitrary positive rational-weight approximation | `RandomOrderMatching.arbitrary_weight_approximation` |
-| Actual returned matching and input containment | `RandomOrderMatching.arbitrary_weight_valid`, and the bounded machine contract's validity field |
-| Actual retained-window decoder equals the probability theorem's output | `RandomOrderMatching.arbitrary_weight_stream_output_eq` |
-| Literal original-label permutation/output formulation | `R8StreamingWrapper.finalBoundedOutput_uniform_probability` |
-| Historical weighted deletion | `R7CopyDualGeneralHistory.historical_every_matching` |
-| Historical transfer for arbitrary selected copied matchings | `R7CopyDualGeneralCopies.historical_copied_matching_bound` |
-| Actual graph-to-profile construction and certificate | `R7SupportFlowMap.actual_graph_profile_certificate` |
-| Exact rational certificate and final constant arithmetic | `R7ReductionCertificate.Concrete.exact_profile_certificate`, `post_error_ratio` |
-| Actual canonical fixed-host guarantee | `R8FixedHost.canonical_uniform_suffix` |
-| Integration over actual acquisition histories | `R8AcquisitionProbability.canonical_physical_suffix_failure_probability` |
-| General deterministic weight-window reduction | `R8WeightWindows.planned_arbitrary_weight` |
-| Every-execution canonical stored-record bound | `R8StreamingResources.canonical_machine_records` |
-| Explicit polynomial record bound | `R8StreamingResources.canonical_machine_records_polynomial` |
-| Actual live-window dictionary storage | `R8StreamingResources.canonical_window_records` |
-| Actual metadata and finite field ledger | `R8StreamingResources.actual_metadata_cap`, `configured_actual_field_ledger` |
+| Bounded-integer random-order approximation | `Algorithms.bounded_integer_approximation` |
+| Complete bounded-integer machine contract | `Algorithms.bounded_integer_contract` |
+| Unweighted random-order approximation | `Algorithms.unweighted_approximation` |
+| Arbitrary positive rational-weight approximation | `Algorithms.arbitrary_weight_approximation` |
+| Actual returned matching and input containment | `Algorithms.arbitrary_weight_valid`, and the bounded machine contract's validity field |
+| Actual retained-window decoder equals the probability theorem's output | `Algorithms.arbitrary_weight_stream_output_eq` |
+| Literal original-label permutation/output formulation | `Streaming.finalBoundedOutput_uniform_probability` |
+| Historical deletion for arbitrary disjoint vertex sets and arbitrary observation times | `HistoricalDeletion.historical_deletion_bound` |
+| Chronologically ordered release budget | `Unfolding.PhaseLifting.historical_deletion_budget_verified` |
+| Matching-endpoint specialization with automatic time ordering | `HistoricalDeletion.Matching.historical_every_matching` |
+| Historical transfer for arbitrary selected copied matchings | `HistoricalDeletion.CopiedTransfer.historical_copied_matching_bound` |
+| Actual graph-to-profile construction and certificate | `Analysis.Profile.actual_graph_profile_certificate` |
+| Exact rational certificate and final constant arithmetic | `Certificates.DegreeProfile.Concrete.exact_profile_certificate`, `Certificates.DegreeProfile.Concrete.post_error_ratio` |
+| Actual canonical fixed-host guarantee | `Analysis.FixedHost.canonical_uniform_suffix` |
+| Integration over actual acquisition histories | `Acquisition.Probability.canonical_physical_suffix_failure_probability` |
+| General deterministic weight-window reduction | `Weights.Windows.planned_arbitrary_weight` |
+| Every-execution canonical stored-record bound | `Resources.canonical_machine_records` |
+| Explicit polynomial record bound | `Resources.canonical_machine_records_polynomial` |
+| Actual live-window dictionary storage | `Resources.canonical_window_records` |
+| Actual metadata and finite field ledger | `Resources.actual_metadata_cap`, `Resources.configured_actual_field_ledger` |
 
 The approximation ratio is exactly `71295/100000`. The bounded machine
 contract quantifies over all duplicate-free input lists with integer weights
-in the stated range. `Machine.Good` means the output meets the ratio against
-every input matching. `permMean` is the uniform mean over the input list's
+in the stated range. `Weights.Windows.Machine.Good` means the output meets the ratio against
+every input matching. `Probability.Restriction.permMean` is the uniform mean over the input list's
 permutations. These are concrete finite probability spaces, not supplied
 probabilistic success hypotheses.
 
@@ -45,3 +47,8 @@ used in the proof, with its precise support and chronology hypotheses.
 Storage claims above concern actual record/metadata counts and finite
 component encodings. They do not assert that a complete packed machine
 serializer or the standard matching solver's runtime has been verified.
+
+The historical endpoint constructs the release order internally. It permits
+empty demand sets/families and tied or zero observation times. The vertex
+sets are pairwise disjoint; hosts need be increasing only through the stated
+terminal time. No supplied scheduling or submodularity premise remains.

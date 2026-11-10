@@ -1,0 +1,58 @@
+{
+  "status": "PASS",
+  "recorded_utc": "2026-11-10T16:26:24.920583+00:00",
+  "fresh_modules_with_root": 309,
+  "prior_project_objects_reused": 0,
+  "declarations_audited": 6504,
+  "raw_axiom_free_declarations": 1381,
+  "raw_dependency_constants": 64222,
+  "raw_dependency_edges": 1592513,
+  "raw_dependency_relation": "All constant types including quotient primitives; available definition/theorem/opaque bodies; explicit constant and projection-owner names throughout expressions; mutual inductive families and constructors; constructor parents; recursor mutual families and each rule constructor/RHS. All cycles retained. Counts describe this conservative dependency graph, not logically minimal assumptions.",
+  "allowed_axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+  ],
+  "elaborated_statement_types_compared": 6504,
+  "computational_definition_values_compared": 1566,
+  "build_source_manifest_sha256": "634f23f13ec90382637869f9f91c1bce028980dd7ecd198f5ec1a6b3b27d5068",
+  "verification_record_sha256": {
+    "reproduction": "2d42b19812a6b25b4599acb3da454ad48c0e959dd6d454d92bd144e70c98d762",
+    "exports": "4dfb37ffc2e9f175c60bd83f711e0db1c1ba81cacaaa14000b1325cef3be3494",
+    "comparison": "0f05c497560fe834bc5d684e4f0612a2cbc98627a534652ccefc6b66191ff44d",
+    "independent_source_review": "0df58bf46910624b4e9d785acd5b17e0298ba8a76a96ac24f40447fe81ecbc4a",
+    "raw_auditor_test": "d6866a6fd6c31424631b52bbf989032f76c7001fff087fe4e291da5492dfff78",
+    "raw_auditor_review": "8e11409e3060c7250e065552947fa60f4335fc85e4afddc0d737a85a5da1304e"
+  },
+  "renamed_type_export_sha256": "ceffb151588d3039b54c03295ad5cbf0ab29072284e5a4397f317e376f58ba3c",
+  "renamed_value_export_sha256": "2032f8d5e4b8bd13d03ba4ad5c272a3bb778570f0aca7a2f16eb79efbb689a8a",
+  "all_proof_modules_root_build_config_and_certificate_bytes_unchanged": true,
+  "auditor_logic_changed_and_tested": true,
+  "published_auditor_sha256": "86b340468d73db7335639459e246f6462bf2166a362dae00d0c4ad575637705e",
+  "original_completion_record_sha256": "b996e487061c56a3f1e676b64b2a6f1ee70875540e8a6ba29573f9c8ebfefa1d",
+  "cached_axiom_free_counts": {
+    "before_rename": 1385,
+    "after_rename": 1383
+  },
+  "final_audit_sha256": "0b532d64e9a9b78994712825f5df0b6ad4b53767296e56921ef6be4f01be1642",
+  "release_changes": {
+    "AuditAxioms.lean": {
+      "before": "46badced725f312d02a94fb07fdd410b835a2562420a2e3fa97609890f86af22",
+      "after": "86b340468d73db7335639459e246f6462bf2166a362dae00d0c4ad575637705e"
+    },
+    "README.md": {
+      "before": "289bafccdb6ed58ee3a965674502f171fd00da2f6c4c26dc7126df333961e518",
+      "after": "d6278cb56a6c445821f89433f6260b1478ba35431ad4a2e310bcf48a5bce53a7"
+    },
+    "VERIFICATION_STATUS.md": {
+      "before": "358529fdb7d2fe956b4c27d2e8dd20535ba758a7390ee192c5a1692f1df3b8ba",
+      "after": "e5b224c4a0c350382d02bb94988cfd62d01bbcd40b3a09aba9c160e8cb21dc90"
+    }
+  },
+  "scope_excludes": [
+    "extracted executable",
+    "complete packed serializer",
+    "heap allocator",
+    "machine-level external matching solver time/workspace"
+  ]
+}
