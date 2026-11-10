@@ -3,65 +3,78 @@
 Lean proofs and exact certificates accompanying work by Alireza Farhadi
 and Mohammadtaghi Hajiaghayi.
 
-This is an in-progress artifact. The current entry point verifies selected
-components of the intended paper. **It does not yet prove the complete
-random-order streaming algorithm**, its probability guarantee, or its total
-space bound.
+The mathematical approximation guarantees are proved for the actual streaming
+algorithms on simple general graphs, and therefore also on bipartite graphs:
 
-## Included verified components
+| Weights | Approximation | Failure probability |
+|---|---|---|
+| Unweighted | 0.71295 | At most delta |
+| Bounded positive integers | 0.71295 | At most delta |
+| Arbitrary positive rationals | 0.71295 minus epsilon | At most delta |
 
-- Historical weighted deletion and copied-transfer theorems on actual
-  graphs, including overlapping original parents of a selected copied matching.
-- The concrete rational repair-profile certificate, with value
-  `2896371675910694789 / 4062500000000000000`, and the arithmetic showing
-  that the specified error and prefix losses leave more than `0.71295`.
-- Deterministic execution of weighted phases, retained matching output,
-  per-phase record bounds, and execution-to-repair composition with explicit
-  upstream graph and probability-event hypotheses.
+The algorithms use one pass in uniformly random original-edge order. Their
+confidence parameters, acquisition histories, exact/abort branches, weight
+clipping, and weight-window retirement are instantiated in the proofs.
+The public theorems do not assume an algorithm-success or profile-feasibility
+conclusion. The unknown stream length and weight range are handled by the
+defined algorithms.
 
-The certificate theorem requires actual profile feasibility; the execution
-theorem requires its stated structural and event inputs. Full acquisition,
-probability, graph-to-profile and streaming-wrapper composition is ongoing.
-The source manifest lists only the dependency closure of these entry points.
-Historical round numbers in module names are identifiers, not extra claims.
+Start with [RandomOrderMatching.lean](RobustMatching/RandomOrderMatching.lean)
+and the [theorem map](THEOREM_MAP.md). `SOURCE_MANIFEST.json` records the
+selected entry points and their exact local dependency closure. Historical
+round numbers in dependency filenames are identifiers, not additional claims
+about the paper's scope.
 
-## Verify the Lean proofs
+## Verification
 
-The toolchain and mathlib revision are pinned in `lean-toolchain` and
-`lake-manifest.json`. With Lean's `elan` installed:
+The Lean toolchain and mathlib revision are pinned. With `elan` installed:
 
 ```sh
 lake exe cache get
-lake build
-lake env lean AuditAxioms.lean
+python3 verify.py
 ```
 
-The axiom audit checks every declaration from the imported project modules,
-including generated declarations. Only `propext`, `Classical.choice` and
-`Quot.sound` are allowed. No admission, additional axiom or `native_decide`
-is used to certify the numerical result.
+The axiom audit checks every declaration owned by the imported project
+modules, including generated declarations. Only `propext`, `Classical.choice`
+and `Quot.sound` are permitted. No admission, new axiom or `native_decide`
+certifies the result. `verify.py` builds local modules sequentially and saves
+source hashes, compiler logs and the final axiom audit under `verification/`.
+An interrupted check can be resumed with `python3 verify.py --resume`;
+unchanged source, dependency and compiled-output hashes are checked before
+reuse. Standard `lake build` followed by `lake env lean AuditAxioms.lean`
+is also supported.
 
-## Independently verify the rational certificate
+## Exact numerical certificate
 
 ```sh
 python3 certificates/degree_profile/verify.py
 ```
 
-This check uses only Python's standard library and reconstructs all
-996,325 semantic columns using exact rational arithmetic. It does not
-import an optimizer or the producer's matrix builder. A passing certificate
-alone is not a proof of the streaming algorithm; graph feasibility and
-probability are separate mathematical obligations.
+This independent checker uses only Python's standard library. It reconstructs
+all 996,325 semantic columns and checks them with exact rational arithmetic;
+it does not import an optimizer or the producer's matrix builder. The
+certificate value is
+`2896371675910694789 / 4062500000000000000`. The proved error and prefix
+losses leave more than 0.71295. The Lean development separately proves the
+actual graph-to-profile map and the complete probability composition.
 
-The degree-profile certificate partitions normalized vertex degrees into
-152 intervals and accounts for every benchmark-edge type, including edges
-with both endpoints in the cover. The directory name describes its role;
-the interval count is a parameter of this particular certificate.
+The degree profile has 152 intervals and includes benchmark edges with both
+endpoints in the cover. The certificate data and checker accompany the source
+package; floating-point experiments are not used as proof.
+
+## Formal scope
+
+The proofs establish the mathematical state transitions, matching validity,
+approximation guarantees, actual stored-record/metadata bounds and finite
+component encodings. This is not an extracted executable implementation.
+A packed state serializer, heap allocator, and the machine-level complexity
+of the standard exact matching solver are outside the formalization. The
+paper gives the implementation correspondence and cites the solver's space
+and running-time guarantees explicitly.
 
 ## AI methodology
 
 OpenAI Codex, using the Astra model, materially supported literature discovery,
-proof development and review,
-exact experiments, Lean formalization, and drafting. Fable 5.2 also contributed
-conjectures, proof ideas, and mathematical feedback. The final paper will
-describe the full verification coverage. The current scope is stated above.
+proof development and review, exact experiments, Lean formalization, and
+drafting. Fable 5.2 also contributed conjectures, proof ideas, and mathematical
+feedback. The theorem map and verification records specify what was checked.
