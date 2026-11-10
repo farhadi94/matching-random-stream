@@ -1,0 +1,7 @@
+.lake/
+.DS_Store
+*.olean
+*.ilean
+*.log
+__pycache__/
+certificates/internal152/verification.json
